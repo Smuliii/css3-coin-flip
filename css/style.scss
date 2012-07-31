@@ -1,0 +1,153 @@
+/* ---------------------------------------------------------------------- */
+/*	SASS Config
+/* ---------------------------------------------------------------------- */
+
+@import 'compass/css3';
+
+@mixin hide-text {
+	background-color: transparent;
+	border: 0;
+	color: transparent;
+	font: 0/0 a;
+	text-shadow: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Reset (http://necolas.github.com/normalize.css/)
+/* ---------------------------------------------------------------------- */
+
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:87.5%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}::-moz-selection{text-shadow:none}::selection{text-shadow:none}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}h2{font-size:1.5em;margin:.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:.83em;margin:1.67em 0}h6{font-size:.75em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}hr{display:block;height:1px;border:0;border-top:1px solid #c0c0c0;margin:1em 0;padding:0}mark{background:#ff0;color:#000}p,pre{margin:1em 0}code,kbd,pre,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:75%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none;margin:0;padding:0}img{border:0;vertical-align:middle;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}label{cursor:pointer}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top;resize:vertical}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}
+
+/* ---------------------------------------------------------------------- */
+/*	Basic Elements & Classes
+/* ---------------------------------------------------------------------- */
+
+body {
+	background: #3D749C;
+	color: #222; 
+    font-size: 1em;
+	font: 1em/1.4 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+::-moz-selection { background: hotpink; color: white; }
+::selection { background: hotpink; color: white; }
+
+a {
+	color: #1E3749;
+	text-decoration: none;
+}
+
+	a:hover {
+		color: #222;
+		text-decoration: underline;
+	}
+
+/* ---------------------------------------------------------------------- */
+/*	Generic Classes
+/* ---------------------------------------------------------------------- */
+
+.clearfix:before,.clearfix:after{content:' ';display:table}.clearfix:after{clear:both}.clearfix{*zoom:1}
+
+.hidden { display: none; visibility: hidden; }
+
+.screenreader { clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); height: 1px; overflow: hidden; position: absolute; width: 1px; }
+
+.align-left { float: left; }
+
+	img.align-left { margin-bottom: 15px; margin-right: 15px; }
+
+.align-right { float: right; }
+
+	img.align-right { margin-bottom: 15px; margin-left: 15px; }
+
+.align-center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+
+.container {
+	margin: 20em auto;
+	position: relative;
+	text-align: center;
+	width: 400px;
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Button
+/* ---------------------------------------------------------------------- */
+
+.button {
+	background: #595959;
+	@include border-radius(41px);
+	@include box-shadow(
+		0 0 0 41px rgba(255, 255, 255, 0.08),
+		inset 0 3px 11px #111
+	);
+	cursor: pointer;
+	height: 82px;
+	margin: 0 auto 82px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 82px;
+
+	.front, .back {
+		@include backface-visibility(hidden);
+		@include border-radius(33px);
+		@include box-shadow(
+			inset 0 1px 0 rgba(255, 255, 255, .6),
+			0 5px 6px rgba(7, 7, 7, .7)
+		);
+		height: 66px;
+		left: 50%;
+		overflow: hidden;
+		position: absolute;
+		margin: -33px 0 0 -33px;
+		top: 50%;
+		@include transition( all .8s cubic-bezier(.6, -0.6, .4, 1.4) );
+		width: 66px;
+	}
+
+	.front {
+		background: #009edf;
+		@include background( linear-gradient(top, #46d8ff, #21c3f7 25%, #0094db 50%, #008ed7 70%, #39d4ff) );
+		z-index: 1;
+	}
+
+		&:hover > .front {
+			opacity: 0;
+			@include transform( rotateX(180deg) );
+			z-index: 0;
+		}
+
+		.tweet-bird {
+			@include hide-text;
+			background: url(../img/bird.png) no-repeat center;
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+
+	.back {
+		background: #fff;
+		display: table;
+		opacity: 0;
+		@include transform( rotateX(180deg) );
+	}
+
+		&:hover > .back {
+			@include transform( rotateX(0) );
+			opacity: 1;
+		}
+
+		.tweet-count {
+			color: #00a2dc;
+			display: table-cell;
+			font-weight: bold;
+			font-size: 1.2em;
+			text-shadow: 0 -1px rgba(24, 123, 159, .1);
+			vertical-align: middle;
+		}
+
+}
